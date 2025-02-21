@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">VG</string>
+
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="login">Авторизоваться</string>
+    <string name="logout">Выйти</string>
+
+    <string name="no_account_1">Впервые здесь?</string>
+    <string name="no_account_2">Зарегистрироваться</string>
+
+    <string name="email">Почта</string>
+    <string name="username">Ник</string>
+    <string name="password">Пароль</string>
+
+    <string name="menu_chats">Чаты</string>
+    <string name="menu_new_chat">Новый чат</string>
+    <string name="menu_profile">Профиль</string>
+
+    <string name="no_chat_1">Похоже, у вас еще нет ни одного чата.</string>
+    <string name="no_chat_2">Нажмите, чтобы создать.</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+    <string name="create_chat">Чат создан</string>
+    <string name="development">В разработке...</string>
+    <string name="errorValue">Введены некорректные значения</string>
+
+    <string name="apply">Применить</string>
+    <string name="user">Пользователь</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

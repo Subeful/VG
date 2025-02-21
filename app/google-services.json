@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622263961810",
+    "project_id": "vgroup-48801",
+    "storage_bucket": "vgroup-48801.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622263961810:android:53ec2e59144cb11010c50b",
+        "android_client_info": {
+          "package_name": "com.andrey.vg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJOLKKznZDYIxS8kxx5sqNr1ZWGBKqEqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

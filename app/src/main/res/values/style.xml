@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
+    <style name="textSeamyBold">
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">@font/readex_pro</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="constrainPositionCenter">
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+</resources>

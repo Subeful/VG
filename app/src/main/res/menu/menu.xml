@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bot_menu_chats"
+        android:title="@string/menu_chats"
+        android:icon="@drawable/ic_groups"/>
+    <item
+        android:id="@+id/bot_menu_profile"
+        android:title="@string/menu_profile"
+        android:icon="@drawable/vc_profile"/>
+</menu>
