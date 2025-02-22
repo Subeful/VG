@@ -54,6 +54,9 @@ class MainActivity : AppCompatActivity() {
         setFragment(GroupsFragment())
         botNavMain = binding.botNavMain
         botNavMain.itemActiveIndicatorColor = getColorStateList(R.color.transparent)
+
+        if(FirebaseAuth.getInstance().uid == null)
+            finishAffinity()
     }
 
     fun setWindowsUtils(){
