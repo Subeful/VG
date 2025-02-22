@@ -12,6 +12,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.andrey.vg.R
 import com.andrey.vg.databinding.ActivityLoginBinding
+import com.andrey.vg.screens.MainActivity
+import com.andrey.vg.utils.Cipher
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -36,16 +38,16 @@ class LoginActivity : AppCompatActivity() {
             val password = Cipher.encryptPassword(context, temporarilyPassword)
 
             if (email.isEmpty() || password.isEmpty())
-                Toast.makeText(context, "Field can't be empty", Toast.LENGTH_SHORT).show()
-            else if (email.length < 5 || password.length < 4)
-                Toast.makeText(context, "Field can't be that short", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Заполните все данные", Toast.LENGTH_SHORT).show()
+            else if (password.length < 4)
+                Toast.makeText(context, "Слишком короткий пароль", Toast.LENGTH_SHORT).show()
             else {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful)
                             startActivity(Intent(context, MainActivity::class.java))
                         else
-                            Toast.makeText(context, "User not be find", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Пользователь не найден", Toast.LENGTH_SHORT).show()
                     }
             }
         }
@@ -55,28 +57,24 @@ class LoginActivity : AppCompatActivity() {
             intent.putExtra("user_mail", binding.etLoginEmail.text.toString())
             intent.putExtra("user_password", binding.etLoginPassword.text.toString())
             startActivity(intent)
-
         }
-
         binding.ibLoginEye.setOnClickListener {
             togglePasswordVisibility()
         }
-
     }
+
     fun togglePasswordVisibility() {
         isPasswordVisible = !isPasswordVisible
         if (isPasswordVisible) {
-
             binding.etLoginPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            binding.ibLoginEye.setBackgroundResource(com.subefu.messu.R.drawable.vc_eye_on)
+            binding.ibLoginEye.setBackgroundResource(R.drawable.vc_eye_on)
         } else {
             binding.etLoginPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-            binding.ibLoginEye.setBackgroundResource(com.subefu.messu.R.drawable.vc_eye_off)
+            binding.ibLoginEye.setBackgroundResource(R.drawable.vc_eye_off)
         }
 
         binding.etLoginPassword.setSelection(binding.etLoginPassword.text.length)
     }
-
 
     override fun onBackPressed() {
         super.onBackPressed()
