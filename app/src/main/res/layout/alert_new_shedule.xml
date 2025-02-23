@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center|top">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/alert_sch_date"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:hint="дата" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/alert_sch_num_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            android:hint="№ пары"/>
+        <EditText
+            android:id="@+id/alert_sch_name_1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark"
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
+            android:hint="парa"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/alert_sch_num_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="№ пары"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/alert_sch_name_2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="парa"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/alert_sch_num_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="№ пары"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/alert_sch_name_3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="парa"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/alert_sch_num_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="№ пары"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/alert_sch_name_4"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="парa"
+            android:textColor="@color/dark"
+            android:textSize="20sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,11 +1,17 @@
 package com.andrey.vg.screens.main.group
 
+import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.collection.ArraySet
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -37,7 +43,44 @@ class GroupInfoActivity : AppCompatActivity() {
 
         init()
         loadStudents()
+
+        binding.btAction.setOnClickListener {
+           showPopupMenu(it)
+        }
     }
+    private fun showPopupMenu(anchor: View) {
+        val popupMenu = PopupMenu(this, anchor, Gravity.END)
+
+        val menuInflater = popupMenu.menuInflater
+        menuInflater.inflate(R.menu.group_action, popupMenu.menu)
+
+        if (role == "Student") {
+            popupMenu.menu.removeItem(R.id.menu_startLesson)
+        } else if (role == "Teacher"){
+            popupMenu.menu.removeItem(R.id.menu_scheduler)
+        }
+
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menu_startLesson -> {
+                    startActivity(Intent(this, LessonGroupActivity::class.java))
+                    true
+                }
+                R.id.menu_scheduler -> {
+                    startActivity(Intent(this, SchedulActivity::class.java).putExtra("group_id", group_id))
+                    true
+                }
+                R.id.menu_history -> {
+                    Toast.makeText(baseContext, "three", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popupMenu.show()
+    }
+
 
     fun init(){
         val intent = intent

@@ -9,9 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.andrey.vg.R
-import com.andrey.vg.models.Users
-import com.andrey.vg.screens.MainActivity
-import com.andrey.vg.screens.main.group.GroupInfoActivity
 
 class StudentAdapter(val context: Context?, var listGroup: List<String>): RecyclerView.Adapter<StudentAdapter.StudentViewHolder>(){
 

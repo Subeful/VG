@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_startLesson"
+        android:title="Начать урок" />
+    <item
+        android:id="@+id/menu_history"
+        android:title="История" />
+    <item
+        android:id="@+id/menu_scheduler"
+        android:title="Расписание" />
+</menu>

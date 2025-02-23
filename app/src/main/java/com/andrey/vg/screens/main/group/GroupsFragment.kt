@@ -52,6 +52,7 @@ class GroupsFragment : Fragment() {
             .addListenerForSingleValueEvent(object :
             ValueEventListener {
                 var role = ""
+                var group_id = ""
             override fun onDataChange(snapshot: DataSnapshot) {
                 val groupStr = snapshot.child("Users")
                 if(groupStr.childrenCount.toInt() == 0)
@@ -62,11 +63,16 @@ class GroupsFragment : Fragment() {
                     if(groupID.length > 2)
                         listGroups.add(groupID)
 
-                    if (uid == group.child("id").value.toString())
+                    if (uid == group.child("id").value.toString()){
                         role = group.child("role").value.toString()
+                        group_id = group.child("group_id").value.toString()
+                    }
                 }
 
-                rv.setAdapter(GroupAdapter(context, listGroups.toList(), role));
+                if(role != "Student")
+                    rv.setAdapter(GroupAdapter(context, listGroups.toList(), role));
+                else
+                    rv.setAdapter(GroupAdapter(context, listOf(group_id), role));
             }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(getContext(), "Failed to get user chats", Toast.LENGTH_SHORT).show();
