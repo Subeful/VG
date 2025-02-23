@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andrey.vg.R
 import com.andrey.vg.models.Schedule
+import java.text.SimpleDateFormat
 
 class SchedulAdapter(val context: Context?, val listData: List<Schedule>)
     : RecyclerView.Adapter<SchedulAdapter.ScheduleViewHolder>() {
@@ -19,7 +20,8 @@ class SchedulAdapter(val context: Context?, val listData: List<Schedule>)
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val info = listData[position]
-        holder.date.text = info.date
+        val date = info.date
+        holder.date.text = date.substring(4,6) + "." + date.substring(6)
         var i = 0
         info.pars.forEach { t, u ->
             if(i==0){holder.n1.setText(t); holder.name1.setText(u)}

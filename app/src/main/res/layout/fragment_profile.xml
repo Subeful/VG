@@ -45,4 +45,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <TextView
+        android:id="@+id/tv_profile_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/readex_pro"
+        tools:text="Some student"
+        android:textColor="@color/dark"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_username" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

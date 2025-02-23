@@ -30,18 +30,31 @@
             android:textColor="@color/dark"/>
     </LinearLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/tv_lesson_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/readex_pro"
+        android:hint="Основы алгоритмизации"
+        android:layout_marginStart="10dp"
         android:textColor="@color/dark"
         android:textSize="20sp"
-        android:fontFamily="@font/readex_pro"
-        tools:text="Основы алгоритмизации"
-        app:layout_constraintTop_toBottomOf="@id/ln_title"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ln_title" />
+
+    <Button
+        android:id="@+id/bt_update_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/dark_grey"
+        android:text="Загрузить"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_lesson_name"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"/>
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toEndOf="@+id/tv_lesson_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_lesson_name" />
 
     <TextView
         android:id="@+id/textView"

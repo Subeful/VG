@@ -63,7 +63,7 @@ class GroupInfoActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.menu_startLesson -> {
-                    startActivity(Intent(this, LessonGroupActivity::class.java))
+                    startActivity(Intent(this, LessonGroupActivity::class.java).putExtra("group_id", group_id))
                     true
                 }
                 R.id.menu_scheduler -> {

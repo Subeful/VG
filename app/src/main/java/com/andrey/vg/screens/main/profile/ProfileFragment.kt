@@ -41,15 +41,25 @@ class ProfileFragment : Fragment() {
     }
 
     fun init(){
-        setName()
+        setInfo()
 //        loadAva()
     }
 
-    fun setName(){
-        FirebaseDatabase.getInstance("https://vgroup-48801-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid)
+    fun setInfo(){
+        FirebaseDatabase.getInstance("https://vgroup-48801-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference().child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     binding.tvProfileUsername.setText(snapshot.child("userName").value.toString())
+                    val role = snapshot.child("role").value.toString()
+
+                    binding.tvProfileInfo.text = when(role){
+                        "Scheduler" -> "Составитель расписаний"
+                        "Teacher" -> "Преподаватель"
+                        else -> {
+                            "Студент группы " + snapshot.child("group_id").value.toString()
+                        }
+                    }
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
@@ -71,45 +81,4 @@ class ProfileFragment : Fragment() {
         alert.create().show()
     }
 
-/*    fun chooseAva(inflater: LayoutInflater){
-        val view = LayoutInflater.from(inflater.context).inflate(R.layout.alert_choose_ava, null)
-
-        val im_1 = view.findViewById<ImageButton>(R.id.alert_choose_1)
-        val im_2 = view.findViewById<ImageButton>(R.id.alert_choose_3)
-        val im_3 = view.findViewById<ImageButton>(R.id.alert_choose_2)
-        val im_4 = view.findViewById<ImageButton>(R.id.alert_choose_4)
-
-        im_1.setOnClickListener { setAva(1) }
-        im_2.setOnClickListener { setAva(2) }
-        im_3.setOnClickListener { setAva(3) }
-        im_4.setOnClickListener { setAva(4) }
-
-        AlertDialog.Builder(inflater.context).setView(view).create().show()
-    }
-    fun setAva(imageId: Int){
-        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .child("profileImage").setValue(imageId)
-
-        when(imageId){
-            1 -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_1)
-            2 -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_2)
-            3 -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_3)
-            4 -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_4)
-        }
-    }
-    fun loadAva(){
-        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .child("profileImage").addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    when(snapshot.value.toString()){
-                        "1" -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_1)
-                        "2" -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_2)
-                        "3" -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_3)
-                        "4" -> binding.imProfileAva.setBackgroundResource(R.drawable.png_animal_4)
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {}
-            })
-    }*/
 }

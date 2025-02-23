@@ -1,6 +1,7 @@
 package com.andrey.vg.adapters
 
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import com.andrey.vg.R
 import com.andrey.vg.models.Students
 import java.text.SimpleDateFormat
 
-class JournalLineAdapter(val context: Context?, val students: List<Students>, val dates: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class JournalLineAdapter(val context: Context?, val students: List<Students>, val dates: List<String>, private val gradeClickListener: OnGradeClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val TYPE_HEADER = 0
@@ -39,6 +40,8 @@ class JournalLineAdapter(val context: Context?, val students: List<Students>, va
             is StudentViewHolder -> {
                 val student = students[position - 1] // Позиция 0 — заголовок, поэтому students[position - 1]
                 holder.bind(student, dates)
+                if(position % 2 == 0)
+                    holder.itemView.background = context?.getDrawable(R.color.light)
             }
         }
     }
@@ -55,7 +58,7 @@ class JournalLineAdapter(val context: Context?, val students: List<Students>, va
         }
     }
 
-    class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val studentName: TextView = itemView.findViewById(R.id.studentName)
         private val gradeViews: List<TextView> = listOf(
             itemView.findViewById(R.id.grade_0),
@@ -75,10 +78,9 @@ class JournalLineAdapter(val context: Context?, val students: List<Students>, va
                 val date = dates[i]
                 val grade = student.grades[date] ?: ""
                 gradeViews[i].text = grade
-            }
-            for(view in gradeViews){
-                view.setOnClickListener {
 
+                gradeViews[i].setOnClickListener {
+                    gradeClickListener.onGradeClick(student, date, i)
                 }
             }
         }
@@ -105,5 +107,8 @@ class JournalLineAdapter(val context: Context?, val students: List<Students>, va
                 }
             }
         }
+    }
+    interface OnGradeClickListener {
+        fun onGradeClick(student: Students, date: String, position: Int)
     }
 }
