@@ -37,28 +37,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro_bold"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="1"/>
             <TextView
                 android:id="@+id/model_shc_i_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro_bold"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="2"/>
             <TextView
                 android:id="@+id/model_shc_i_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro_bold"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="3"/>
             <TextView
                 android:id="@+id/model_shc_i_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro_bold"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="4"/>
         </LinearLayout>
         <View
@@ -77,28 +77,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="1"/>
             <TextView
                 android:id="@+id/model_shc_sub_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="2"/>
             <TextView
                 android:id="@+id/model_shc_sub_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="3"/>
             <TextView
                 android:id="@+id/model_shc_sub_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/readex_pro"
-                tools:textColor="@color/dark"
+                android:textColor="@color/dark"
                 tools:text="4"/>
         </LinearLayout>
     </LinearLayout>

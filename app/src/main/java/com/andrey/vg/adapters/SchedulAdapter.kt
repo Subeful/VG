@@ -1,5 +1,6 @@
 package com.andrey.vg.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ class SchedulAdapter(val context: Context?, val listData: List<Schedule>)
         return ScheduleViewHolder(view)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val info = listData[position]
         val date = info.date

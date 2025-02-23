@@ -45,14 +45,10 @@ class SignUpActivity : AppCompatActivity() {
             else{
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
-
-                        val db = FirebaseDatabase.getInstance("https://vgroup-48801-default-rtdb.europe-west1.firebasedatabase.app/")
-                            .getReference("Users")
+                        val db = FirebaseDatabase.getInstance("https://vgroup-48801-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Users")
                         val id = FirebaseAuth.getInstance().currentUser?.uid
-
                         if(id != null){
                             val userInfo = Users(id, username, password, getRole(temporarilyPassword), getGroup(temporarilyPassword))
-
                             db.child(id).setValue(userInfo)
                             startActivity(Intent(context, MainActivity::class.java))
                         }
@@ -90,14 +86,12 @@ class SignUpActivity : AppCompatActivity() {
     fun togglePasswordVisibility() {
         isPasswordVisible = !isPasswordVisible
         if (isPasswordVisible) {
-
             binding.etSignUpPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
             binding.ibSingUpEye.setBackgroundResource(R.drawable.vc_eye_on)
         } else {
             binding.etSignUpPassword.transformationMethod = PasswordTransformationMethod.getInstance()
             binding.ibSingUpEye.setBackgroundResource(R.drawable.vc_eye_off)
         }
-
         binding.etSignUpPassword.setSelection(binding.etSignUpPassword.text.length)
     }
 

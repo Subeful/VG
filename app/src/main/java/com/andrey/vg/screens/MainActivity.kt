@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     fun setWindowsUtils(){
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.dark))
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.light_grey))
     }
 
     fun checkIsAuthorisation(){

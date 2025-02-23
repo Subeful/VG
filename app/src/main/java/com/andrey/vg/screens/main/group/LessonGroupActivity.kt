@@ -70,7 +70,6 @@ class LessonGroupActivity : AppCompatActivity() {
     fun getStudentsByGroupAndSubject(groupId: String, subject: String, callback: (List<Students>) -> Unit) {
         val database = FirebaseDatabase.getInstance("https://vgroup-48801-default-rtdb.europe-west1.firebasedatabase.app/").reference
         val studentsList = mutableListOf<Students>()
-
         database.child("Users").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (userSnapshot in snapshot.children) {
@@ -78,29 +77,24 @@ class LessonGroupActivity : AppCompatActivity() {
                     if (userGroupId == groupId) { // Фильтруем по group_id
                         val userName = userSnapshot.child("userName").getValue(String::class.java) ?: ""
                         val userId = userSnapshot.key ?: ""
-
                         // Получаем оценки для этого студента
                         database.child("Grades").child(userId).child(subject)
                             .addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(gradeSnapshot: DataSnapshot) {
                                     val gradesMap = mutableMapOf<String, String>()
-
                                     // Заполняем оценки по датам
                                     for (gradeEntry in gradeSnapshot.children) {
                                         val date = gradeEntry.key ?: ""
                                         val grade = gradeEntry.getValue(String::class.java) ?: ""
                                         gradesMap[date] = grade
                                     }
-
                                     // Создаем объект Students и добавляем в список
                                     studentsList.add(Students(userName, gradesMap))
-
                                     // Если это последний студент, вызываем callback
                                     if (studentsList.size == snapshot.children.count { it.child("group_id").getValue(String::class.java) == groupId }) {
                                         callback(studentsList)
                                     }
                                 }
-
                                 override fun onCancelled(error: DatabaseError) {
                                     // Обработка ошибок
                                     println("Ошибка при загрузке оценок: ${error.message}")
@@ -109,7 +103,6 @@ class LessonGroupActivity : AppCompatActivity() {
                     }
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 // Обработка ошибок
                 println("Ошибка при загрузке пользователей: ${error.message}")
@@ -200,6 +193,5 @@ class LessonGroupActivity : AppCompatActivity() {
             date.add(Calendar.DAY_OF_WEEK, 1)
         }
         return listDate
-
     }
 }

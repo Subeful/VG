@@ -58,6 +58,7 @@ class GroupInfoActivity : AppCompatActivity() {
             popupMenu.menu.removeItem(R.id.menu_startLesson)
         } else if (role == "Teacher"){
             popupMenu.menu.removeItem(R.id.menu_scheduler)
+            popupMenu.menu.removeItem(R.id.menu_history)
         }
 
         popupMenu.setOnMenuItemClickListener { item ->
@@ -71,7 +72,7 @@ class GroupInfoActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_history -> {
-                    Toast.makeText(baseContext, "three", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(baseContext, HistoryActivity::class.java))
                     true
                 }
                 else -> false
@@ -92,9 +93,7 @@ class GroupInfoActivity : AppCompatActivity() {
 
     fun loadStudents(){
         val uid = FirebaseAuth.getInstance().currentUser?.uid
-
         if(uid == null) return
-
         FirebaseDatabase.getInstance("https://vgroup-48801-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("Users").addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -105,10 +104,7 @@ class GroupInfoActivity : AppCompatActivity() {
                             listStudent.add(group.child("userName").value.toString())
                         }
                             Log.d("MyLog", group.child("userName").value.toString())
-
-
                     }
-
                     rv.setAdapter(StudentAdapter(applicationContext, listStudent.toList()));
                 }
                 override fun onCancelled(error: DatabaseError) {

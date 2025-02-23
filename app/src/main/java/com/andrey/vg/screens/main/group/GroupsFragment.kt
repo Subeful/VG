@@ -57,18 +57,15 @@ class GroupsFragment : Fragment() {
                 val groupStr = snapshot.child("Users")
                 if(groupStr.childrenCount.toInt() == 0)
                     return
-
                 for (group in groupStr.children){
                     val groupID = group.child("group_id").value.toString()
                     if(groupID.length > 2)
                         listGroups.add(groupID)
-
                     if (uid == group.child("id").value.toString()){
                         role = group.child("role").value.toString()
                         group_id = group.child("group_id").value.toString()
                     }
                 }
-
                 if(role != "Student")
                     rv.setAdapter(GroupAdapter(context, listGroups.toList(), role));
                 else
